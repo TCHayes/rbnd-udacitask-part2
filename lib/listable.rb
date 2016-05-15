@@ -3,12 +3,15 @@ module Listable
     "#{description}".ljust(30)
   end
 
-  def format_date(dates={})
+  def format_date(type, dates={})
   	#This method should take in either 1 or 2 dates since TodoItem requires formatting 1 date, while EventItem could have up to 2 dates
-  	dates[:due] ? dates[:due].strftime("%D") : "No due date"
-    dates = dates[:start_date].strftime("%D") if dates[:start_date]
-    dates << " -- " + dates[:end_date].strftime("%D") if dates[:end_date]
-    dates = "N/A" if !dates
+  	if type == "todo"
+  		dates[:due] ? dates[:due].strftime("%D") : "No due date"
+  	elsif type == "event"
+    	dates = dates[:start_date].strftime("%D") if dates[:start_date]
+    	dates << " -- " + dates[:end_date].strftime("%D") if dates[:end_date]
+    	dates = "N/A" if !dates
+    end
     return dates
   end
 

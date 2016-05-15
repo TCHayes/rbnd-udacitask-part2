@@ -3,7 +3,7 @@ class UdaciList
 
   def initialize(options={})
     @title = options[:title]
-    if !options[:title]
+    if !options[:title] #If a title isn't given, the list is titled "Untitled List"
       @title = "Untitled List"
     end
     @items = []
@@ -12,7 +12,7 @@ class UdaciList
     type = type.downcase
     raise UdaciListErrors::InvalidItemType unless ["todo", "event", "link"].include?(type)
     if options[:priority]
-      raise UdaciListErrors::InvalidPriorityValue if !["high", "medium", "low"].include?(options[:priority]) #Messy code; trying to say!include?
+      raise UdaciListErrors::InvalidPriorityValue if !["high", "medium", "low"].include?(options[:priority]) #Confusing code; trying to say !include?
     end
     @items.push TodoItem.new(description, options) if type == "todo"
     @items.push EventItem.new(description, options) if type == "event"
@@ -29,7 +29,10 @@ class UdaciList
     puts @title
     puts "-" * @title.length
     @items.each_with_index do |item, position|
-      puts "#{position + 1}) #{item.details}"
+      puts "#{position + 1}) #{item.class} #{item.details}"
     end
   end
+#  def filter
+#
+#  end
 end
