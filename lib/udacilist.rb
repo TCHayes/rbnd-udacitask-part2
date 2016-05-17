@@ -27,10 +27,20 @@ class UdaciList
   def table_print(items, title) #Added feature. Used for printing both full and filtered lists in table format.
     rows = []
     items.each_with_index do |item, position|
-      rows << [position + 1, "#{item.type.capitalize}", "#{item.details}"]
+      #Added feature. Adds coloring to items in printout based on their item type.
+      if item.type == "todo"
+        colorized_type = "To-Do".colorize(:green)
+      elsif item.type == "event"
+        colorized_type = "Event".colorize(:yellow)
+      else
+        colorized_type = "Link".colorize(:blue)
+      end
+      rows << [position + 1, "#{colorized_type.capitalize}", "#{item.details}"]
     end
     table = Terminal::Table.new headings: ['', "Type", "Details"], rows: rows, title: title
+    table.style = {border_x: "=".colorize(:light_black), border_i: "x"}
     puts table
+    puts "\n"
   end
   def all
     table_print(@items, @title)
