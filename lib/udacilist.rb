@@ -24,15 +24,28 @@ class UdaciList
     end
     @items.delete_at(index - 1)
   end
-  def all
+  def table_print(items) #Added feature. Used for printing both full and filtered lists in table format.
     rows = []
-    @items.each_with_index do |item, position|
-      rows << [position + 1, "#{item.class}", "#{item.details}"]
+    items.each_with_index do |item, position|
+      rows << [position + 1, "#{item.type.capitalize}", "#{item.details}"]
     end
     table = Terminal::Table.new headings: ['', "Type", "Details"], rows: rows, title: @title
     puts table
   end
-#  def filter
-#
-#  end
+  def all
+    table_print(@items)
+  end
+  def filter(type)
+    results = []
+    @items.each do |item|
+      if item.type == type
+        results << item
+      end
+    end
+    if results == []
+      puts "There are no items of that type in this list."
+    else
+      table_print(results)
+    end
+  end
 end

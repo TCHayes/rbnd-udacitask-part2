@@ -1,6 +1,6 @@
 class EventItem
   include Listable
-  attr_reader :description, :start_date, :end_date
+  attr_reader :description, :start_date, :end_date, :type
 
   def initialize(description, options={})
     @description = description
