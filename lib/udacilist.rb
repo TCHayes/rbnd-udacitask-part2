@@ -55,7 +55,7 @@ class UdaciList
     if results == []
       puts "There are no items of that type in this list."
     else
-      table_print(results, @title + " - Filtered")
+      table_print(results, @title + " (Filtered: Only #{type.capitalize}s)")
     end
   end
 end

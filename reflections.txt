@@ -1,13 +1,23 @@
 # What you added to Udacitask 2.0
 # -------------------------------------------------------
 1. What is the gem of your choice and how did you use it?
+	Terminal-Table. I used this to print the lists in a more readable format.
+
 2. Describe the 2 features you added to the project.
-  a) Feature 1...
-  b) Feature 2...
+  a) Feature 1: I added a table_print method (leveraging the Terminal-table gem) that is used for both printing full lists and printing Filtered lists with altered headings to indicate such.
+  b) Feature 2: I colorized the printout, most notably to distinguish between item types.
+
 
 # REFLECTIONS
 # -------------------------------------------------------
 1. How long did you spend working on this project?
+	About a month.
+
 2. What was the most rewarding challenge you conquered?
+	The Listable module seemed to give me the most trouble, and overall I just found myself stuck at points in this project because I was only able to work on it in fits and starts due to a heavy workload at my day job. The most rewarding challenge is just finishing so I can move forward.
+
 3. What two additional features did you build? Why?
+	I focused mainly on making the output look better. Using the Terminal-table gem, I created a more structured, easy to read output that allows for changed titles based on whether the list is complete or filtered to a certain type. Using the colorize gem, I colorized the item types to make them quickly recognizable.
+
 4. Where do you still have room to grow?
+	This project took a really long time. I think this was largely the result of getting frustrated, walking away, and then forgetting some of what I had already done by the time I came back. Things just seemed to click more today and I was able to overcome obstacles better, but in the future I don’t want to rely on days when things just seem to make sense - I need more regular practice so that I remember things better and they become second-nature.
