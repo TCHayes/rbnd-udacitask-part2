@@ -8,14 +8,13 @@ module Listable
   	if type == "todo"
   		dates[:due] ? dates[:due].strftime("%D") : "No due date"
   	elsif type == "event"
-    	dates = dates[:start_date].strftime("%D") if dates[:start_date]
-    	dates << " -- " + dates[:end_date].strftime("%D") if dates[:end_date]
-    	dates = "N/A" if !dates
+    	formatted_dates = dates[:start_date].strftime("%D") if dates[:start_date]
+    	formatted_dates << " -- " + dates[:end_date].strftime("%D") if dates[:end_date]
+    	formatted_dates = "N/A" unless formatted_dates
+      return formatted_dates
     end
-    return dates
   end
 
-#WORKING
   def format_priority
     value = " ⇧".colorize(:green) if @priority == "high"
     value = " ⇨".colorize(:yellow) if @priority == "medium"
