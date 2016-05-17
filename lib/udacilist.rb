@@ -25,12 +25,12 @@ class UdaciList
     @items.delete_at(index - 1)
   end
   def all
-    puts "-" * @title.length
-    puts @title
-    puts "-" * @title.length
+    rows = []
     @items.each_with_index do |item, position|
-      puts "#{position + 1}) #{item.class} #{item.details}"
+      rows << [position + 1, "#{item.class}", "#{item.details}"]
     end
+    table = Terminal::Table.new headings: ['', "Type", "Details"], rows: rows, title: @title
+    puts table
   end
 #  def filter
 #
